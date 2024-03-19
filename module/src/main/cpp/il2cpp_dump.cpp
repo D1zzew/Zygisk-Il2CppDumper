@@ -312,7 +312,7 @@ void il2cpp_dump(const char *outDir) {
 
     std::vector<std::string> outPuts;
     auto outPut = dump_type(Class$$FromName(il2cpp_assembly_get_image(il2cpp_domain_assembly_open(il2cpp_domain_get(), "Assembly-CSharp")),
-                                            "Axlebolt.Standoff.Player", "PlayerController"));
+                                            "Axlebolt.Standoff.Player", "NetworkController"));
     outPuts.push_back(outPut);
    //for (int i = 0; i < imagesToDump.size(); i++) {
    //    auto assembly = il2cpp_domain_assembly_open(il2cpp_domain_get(), imagesToDump[i].c_str());
@@ -339,7 +339,7 @@ void il2cpp_dump(const char *outDir) {
    //}
 
     LOGI("write dump file");
-    auto outPath = std::string(outDir).append("/files/procode_dump.cs");
+    auto outPath = std::string(outDir).append("/files/procode_dump_network.cs");
     std::ofstream outStream(outPath);
     auto count = outPuts.size();
     for (int i = 0; i < count; ++i) {
