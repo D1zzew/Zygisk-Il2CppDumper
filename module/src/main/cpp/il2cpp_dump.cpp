@@ -311,32 +311,32 @@ void il2cpp_dump(const char *outDir) {
     *(void **)(&Class$$FromName) = (void *)(il2cpp_base + 0x1D9646C);
 
     std::vector<std::string> outPuts;
-    auto outPut = dump_type(Class$$FromName(il2cpp_assembly_get_image(il2cpp_domain_assembly_open(il2cpp_domain_get(), "Assembly-CSharp")),
-                                            "Axlebolt.Standoff.Player", "PlayerController"));
-    outPuts.push_back(outPut);
-   //for (int i = 0; i < imagesToDump.size(); i++) {
-   //    auto assembly = il2cpp_domain_assembly_open(il2cpp_domain_get(), imagesToDump[i].c_str());
-   //    if (!assembly) {
-   //        LOGE("Assembly for image %s - not found, skipping", imagesToDump[i].c_str());
-   //        continue;
-   //    }
-   //    auto image = il2cpp_assembly_get_image(assembly);
-   //    if (!image) {
-   //        LOGE("Image for assembly %s - not found, skipping", imagesToDump[i].c_str());
-   //        continue;
-   //    }
+    //auto outPut = dump_type(Class$$FromName(il2cpp_assembly_get_image(il2cpp_domain_assembly_open(il2cpp_domain_get(), "Assembly-CSharp")),
+    //                                        "UnityEngine.UI", "LayoutRebuilder"));
+    //outPuts.push_back(outPut);
+   for (int i = 0; i < imagesToDump.size(); i++) {
+       auto assembly = il2cpp_domain_assembly_open(il2cpp_domain_get(), imagesToDump[i].c_str());
+       if (!assembly) {
+           LOGE("Assembly for image %s - not found, skipping", imagesToDump[i].c_str());
+           continue;
+       }
+       auto image = il2cpp_assembly_get_image(assembly);
+       if (!image) {
+           LOGE("Image for assembly %s - not found, skipping", imagesToDump[i].c_str());
+           continue;
+       }
 
-   //    size_t typesCount = il2cpp_image_get_class_count(image);
-   //    LOGI("%d types", (int) typesCount);
+       size_t typesCount = il2cpp_image_get_class_count(image);
+       LOGI("%d types", (int) typesCount);
 
-   //    for (int j = 0; j < typesCount; ++j) {
-   //        auto klass = Image$$GetType(image, j);
-   //        if (klass) {
-   //            auto outPut = dump_type(klass);
-   //            outPuts.push_back(outPut);
-   //        }
-   //    }
-   //}
+       for (int j = 0; j < typesCount; ++j) {
+           auto klass = Image$$GetType(image, j);
+           if (klass) {
+               auto outPut = dump_type(klass);
+               outPuts.push_back(outPut);
+           }
+       }
+   }
 
     LOGI("write dump file");
     auto outPath = std::string(outDir).append("/files/procode_dump.cs");
