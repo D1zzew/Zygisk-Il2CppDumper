@@ -311,7 +311,7 @@ void il2cpp_dump(const char *outDir) {
     *(void **)(&Class$$FromName) = (void *)(il2cpp_base + 0x1D9646C);
 
     std::vector<std::string> outPuts;
-    auto outPut = dump_type(Class$$FromName(il2cpp_assembly_get_image(il2cpp_domain_assembly_open(il2cpp_domain_get(), "Assembly-CSharp")),
+    auto outPut = dump_type(Class$$FromName(il2cpp_assembly_get_image(il2cpp_domain_assembly_open(il2cpp_domain_get(), "System")),
                                             "System", "String"));
     outPuts.push_back(outPut);
    /*for (int i = 0; i < imagesToDump.size(); i++) {
